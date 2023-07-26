@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Satoshi';
+  src: url('~src/fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.landing{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Satoshi', sans-serif;
+
+    img{
+      object-fit: cover;
+    }
+    
+    .sliderContainer{
+      position: absolute;
+      top: calc(100vh - 350px);
+    }
+    
+    .slider{
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    .slider p{
+      position: relative;
+      margin: 2px;
+      color: white;
+      font-size: 230px;
+      font-weight: 500;
+      padding-right: 50px;
+    }
+    
+    .slider p:nth-of-type(2){
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+  
+    .description{
+      position: absolute;
+      top: 35%;
+      left: 60%;
+      color: white;
+      font-size: 25px;
+      font-weight: 300;
+      p{
+        margin-top: 12px;
+        margin-bottom: 0;
+      }
+      svg{
+        transform: scale(2);
+        margin-bottom: 20px;
+        margin-right: 30px;
+      }
+    }
+  }
+  

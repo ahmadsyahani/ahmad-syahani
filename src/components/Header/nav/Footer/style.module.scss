@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: url('~src/fonts/SpaceGrotesk-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 40px;
+}
