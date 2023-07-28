@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { opacity, slideUp } from './anim';
 
-const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "안녕하세요", "Halo", "🙌"];
+const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "안녕하세요", "नमस्ते", "Halo"];
 const emojis = ["😄", "🤩", "😍", "😊"];
 
 export default function Index() {
