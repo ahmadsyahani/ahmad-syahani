@@ -1,11 +1,38 @@
-import styles from './style.module.scss';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Rounded from '../../common/RoundedButton';
-import { useRef } from 'react';
-import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
+import { useScroll, motion, useTransform } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
 
-export default function index() {
+import styles from './style.module.scss';
+
+const DigitalClock = () => {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const getTimeInSurabaya = () => {
+        const surabayaTime = new Date(time.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+        const gmtOffset = -(surabayaTime.getTimezoneOffset() / 60);
+        const gmt = `GMT ${gmtOffset >= 0 ? '+' : ''}${gmtOffset}`;
+        return gmt;
+    };
+
+    return (
+        <>
+            <p>{time.toLocaleTimeString('en-US', { timeZone: 'Asia/Jakarta' })}</p>
+            <p>{getTimeInSurabaya()}</p>
+        </>
+    );
+};
+
+export default function Index() {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
@@ -14,6 +41,7 @@ export default function index() {
     const x = useTransform(scrollYProgress, [0, 1], [0, 100])
     const y = useTransform(scrollYProgress, [0, 1], [-500, 0])
     const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
+
     return (
         <motion.div style={{ y }} ref={container} className={styles.contact}>
             <div className={styles.body}>
@@ -51,6 +79,9 @@ export default function index() {
                         <span>
                             <h3>Version</h3>
                             <p>© 2023 Version</p>
+                        </span>
+                        <span className={styles.currentTime}>
+                            <h3>Local Time:</h3><DigitalClock />
                         </span>
                     </div>
                     <div>
